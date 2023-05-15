@@ -1,16 +1,13 @@
 import * as React from 'react';
 import ReactMapGL from 'react-map-gl';
-import Map, {Marker, Popup, FullscreenControl} from 'react-map-gl';
+import Map, {Marker, Popup} from 'react-map-gl';
 import { Room, Star } from '@material-ui/icons'
 import axios from 'axios'
 import {format} from 'timeago.js'
 import "./app.css"
 
-  (Map).accessToken = process.env.REACT_APP_MAPBOX;
-
 
 function App() {
-
 
 const [pins, setPins] = React.useState([])
 
@@ -19,11 +16,11 @@ const [currentPlaceId, setCurrentPlaceId] = React.useState(null)
 const [showPopup, setShowPopup] = React.useState(true);
 
 const [viewport, setViewport] = React.useState({
-  width: '100vw',
-  height: '100vh',
+  width: "100vw",
+  height: "100vh",
   latitude: 18.200409624631693,
   longitude: -63.06103528533779,
-  zoom: 6
+  zoom: 15
 })
 
 React.useEffect(() => {
@@ -48,7 +45,8 @@ const handleMarkerClick = (id) => {
 
   return (
     <div className='App'>
-     <Map
+      <Map />
+      <Map
         initialViewState={{
           ...viewport
         }}
@@ -58,20 +56,20 @@ const handleMarkerClick = (id) => {
       >
         
         {pins.map(p =>(
+          console.log(currentPlaceId, p._id),
           <>
-          <Marker longitude={p.long} latitude={p.lat} offsetLeft={-20} offsetRight={-10} onClick={()=> { setCurrentPlaceId(p._id) }}>
+          <Marker longitude={p.long} latitude={p.lat} offsetLeft={-20} offsetRight={-10}>
 
-            <Room style={{color:"slateblue"}}
+            <Room style={{fontSize:viewport.zoom * 2, color:"slateblue"}}
+            onClick={()=>handleMarkerClick(p._id)}
             />
           </Marker>
 
           {p._id === currentPlaceId && (
-            console.log(currentPlaceId, p._id),
           <Popup 
             longitude={p.long} 
             latitude={p.lat}
             anchor="left"
-            closeOnClick={false}
             >
             <div className='card'>
             <label>Place</label>
@@ -94,7 +92,6 @@ const handleMarkerClick = (id) => {
           }
         </>
         ))}
-        <FullscreenControl />
       </Map>
     </div>
     
