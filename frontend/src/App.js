@@ -102,8 +102,8 @@ const handleLogout = () => {
         onDblClick={handleAddClick}
       >
         
-        
-        {pins.map(p =>(
+        { pins &&
+        pins.map(p =>(
           <>
           <Marker longitude={p.long} latitude={p.lat} offsetLeft={-20} offsetRight={-10} onClick={() => handleMarkerClick(p._id, p.lat, p.long) }>
 
