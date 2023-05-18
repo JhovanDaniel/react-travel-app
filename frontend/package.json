@@ -41,5 +41,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://react-travel-app-api.vercel.app/:8800/api/"
+  "proxy": "https://react-travel-app-api.vercel.app/api/"
 }
