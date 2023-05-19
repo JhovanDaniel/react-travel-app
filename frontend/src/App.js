@@ -41,7 +41,7 @@ const [viewport, setViewport] = React.useState({
 React.useEffect(() => {
   const getPins = async () => {
     try{ 
-      const res = await axios.get("/pins");
+      const res = await axios.get("https://react-travel-app-api.vercel.app/api/pins");
       setPins(res.data)
     } catch(err){
       console.log(err)
@@ -101,7 +101,6 @@ const handleLogout = () => {
         mapStyle="mapbox://styles/mapbox/outdoors-v12"
         onDblClick={handleAddClick}
       >
-        {console.log(pins)}
         { pins.map(p =>(
           <>
           <Marker longitude={p.long} latitude={p.lat} offsetLeft={-20} offsetRight={-10} onClick={() => handleMarkerClick(p._id, p.lat, p.long) }>
