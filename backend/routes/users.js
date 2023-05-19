@@ -3,7 +3,7 @@ const User = require("../models/User")
 const bcrypt = require('bcrypt');
 
 //register
-router.post("/register", async (req, res) => {
+router.post("https://react-travel-app-api.vercel.app/api/register", async (req, res) => {
   try{
     //generate new password
     const salt = await bcrypt.genSalt(10)
@@ -26,7 +26,7 @@ router.post("/register", async (req, res) => {
 })
 
 //login
-router.post("/login", async (req, res) => {
+router.post("https://react-travel-app-api.vercel.app/api/login", async (req, res) => {
   try{
     //find user
     const user = await User.findOne({username: req.body.username})
