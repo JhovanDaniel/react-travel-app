@@ -14,8 +14,8 @@ mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopolo
 })
 .catch((err) => console.log(err) )
 
-app.use("https://react-travel-app-api.vercel.app/api/pins", pinRoute)
-app.use("https://react-travel-app-api.vercel.app/api/users", userRoute)
+app.use("/api/pins", pinRoute)
+app.use("/api/users", userRoute)
 
 app.listen(8800, () => {
   console.log("Backend server is running")
