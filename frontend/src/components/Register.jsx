@@ -19,7 +19,7 @@ export default function Register({setShowRegister}){
       password:passwordRef.current.value
     };
     try{
-      await axios.post("https://react-travel-app-api.vercel.app/api/users/register", newUser);
+      const res = await axios.post("https://react-travel-app-api.vercel.app/api/users/register", newUser);
       setError(false)
       setSuccess(true)
     } catch(err){
