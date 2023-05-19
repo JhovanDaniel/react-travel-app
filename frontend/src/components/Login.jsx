@@ -16,7 +16,7 @@ export default function Login({setShowLogin, myStorage, setCurrentUser}){
       password:passwordRef.current.value
     };
     try{
-      const res = await axios.post("/users/login", user);
+      const res = await axios.post("https://react-travel-app-api.vercel.app/api/users/login", user);
       myStorage.setItem("user", res.data.user)
       setCurrentUser(res.data.user)
       setShowLogin(false)
