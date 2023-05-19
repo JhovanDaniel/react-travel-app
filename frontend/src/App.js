@@ -101,9 +101,8 @@ const handleLogout = () => {
         mapStyle="mapbox://styles/mapbox/outdoors-v12"
         onDblClick={handleAddClick}
       >
-        
-        { pins &&
-        pins.map(p =>(
+        {console.log(pins)}
+        { pins.map(p =>(
           <>
           <Marker longitude={p.long} latitude={p.lat} offsetLeft={-20} offsetRight={-10} onClick={() => handleMarkerClick(p._id, p.lat, p.long) }>
 
