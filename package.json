@@ -1,3 +1,5 @@
 {
-  "dependencies": {}
+  "dependencies": {
+    "worker-loader": "^3.0.8"
+  }
 }
