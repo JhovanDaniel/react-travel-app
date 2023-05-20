@@ -1,5 +1,7 @@
 import * as React from 'react';
-import Map, {Marker, Popup} from 'react-map-gl';
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
+import Map, {Marker, Popup} from '!react-map-gl';
 import { Room, Star } from '@material-ui/icons'
 import axios from 'axios'
 import {format} from 'timeago.js'
