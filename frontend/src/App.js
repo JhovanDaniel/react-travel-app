@@ -1,7 +1,5 @@
 import * as React from 'react';
-// @ts-ignore
-// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
-import Map, {Marker, Popup} from '!react-map-gl';
+import Map, {Marker, Popup} from 'react-map-gl';
 import { Room, Star } from '@material-ui/icons'
 import axios from 'axios'
 import {format} from 'timeago.js'
@@ -10,13 +8,8 @@ import "./app.css"
 import Register from './components/Register';
 import Login from './components/Login';
 
-  (Map).accessToken = process.env.REACT_APP_MAPBOX;
+(Map).accessToken = process.env.REACT_APP_MAPBOX;
 
-   // The following is required to stop "npm build" from transpiling mapbox code.
-    // notice the exclamation point in the import.
-    // @ts-ignore
-    // eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
-    Map.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 function App() {
 
