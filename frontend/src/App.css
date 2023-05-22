@@ -34,6 +34,9 @@ form{
   flex-direction: column;
   justify-content: space-between;
 }
+.mapboxgl-popup-close-button{
+  font-size: 25px;
+}
 
 input, textarea, select{
   border: none;
