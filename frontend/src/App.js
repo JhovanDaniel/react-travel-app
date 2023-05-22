@@ -95,18 +95,22 @@ const handleLogout = () => {
 
 const onLongPress = (e) => {
   const { lat, lng: long } = e.lngLat;
-  setNewPlace({ lat, long });
-  setlongPressCount(longPressCount + 1)
+  if (currentUser)
+  {setNewPlace({ lat, long });
+  setlongPressCount(longPressCount + 1)}
+  else{
+    alert('Please register and log in to create pins')
+  }
 };
 
 const onClick = () => {
-  console.log('click is triggered')
+  // console.log('click is triggered')
   setClickCount(clickCount + 1)
 }
 
 const defaultOptions = {
   shouldPreventDefault: true,
-  delay: 500,
+  delay: 1500,
 };
 
 const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
@@ -161,7 +165,7 @@ const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
         </>
         ))}
 
-        { newPlace && (
+        { newPlace && currentUser && (
           <Popup
           latitude={newPlace.lat}
           longitude={newPlace.long}
