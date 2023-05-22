@@ -3,6 +3,8 @@ import Map, {Marker, Popup} from 'react-map-gl';
 import { Room, Star } from '@material-ui/icons'
 import axios from 'axios'
 import {format} from 'timeago.js'
+import useLongPress from './useLongPress';
+
 import "./app.css"
 
 import Register from './components/Register';
@@ -28,6 +30,9 @@ const [newPlace, setNewPlace] = React.useState(null)
 
 const [showRegister, setShowRegister] = React.useState(false)
 const [showLogin, setShowLogin] = React.useState(false)
+
+const [longPressCount, setlongPressCount] = React.useState(0)
+const [clickCount, setClickCount] = React.useState(0)
 
 const [viewport, setViewport] = React.useState({
   width: '100vw',
@@ -88,6 +93,24 @@ const handleLogout = () => {
   setCurrentUser(null)
 }
 
+const onLongPress = (e) => {
+  const { lat, lng: long } = e.lngLat;
+  setNewPlace({ lat, long });
+  setlongPressCount(longPressCount + 1)
+};
+
+const onClick = () => {
+  console.log('click is triggered')
+  setClickCount(clickCount + 1)
+}
+
+const defaultOptions = {
+  shouldPreventDefault: true,
+  delay: 500,
+};
+
+const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
+
 //State check
 
   return (
@@ -100,6 +123,7 @@ const handleLogout = () => {
         mapboxAccessToken={process.env.REACT_APP_MAPBOX}
         mapStyle="mapbox://styles/mapbox/outdoors-v12"
         onDblClick={handleAddClick}
+        {...longPressEvent}
       >
         { pins.map(p =>(
           <>
