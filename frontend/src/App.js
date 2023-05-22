@@ -4,6 +4,7 @@ import { Room, Star } from '@material-ui/icons'
 import axios from 'axios'
 import {format} from 'timeago.js'
 import useLongPress from './useLongPress';
+import { useDoubleTap } from 'use-double-tap';
 
 import "./app.css"
 
@@ -115,6 +116,16 @@ const defaultOptions = {
 
 const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
 
+const bind = useDoubleTap((e) => {
+  const { lat, lng: long } = e.lngLat;
+  if (currentUser)
+  {setNewPlace({ lat, long });
+  setlongPressCount(longPressCount + 1)}
+  else{
+    alert('Please register and log in to create pins')
+  }
+});
+
 //State check
 
   return (
@@ -127,7 +138,8 @@ const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
         mapboxAccessToken={process.env.REACT_APP_MAPBOX}
         mapStyle="mapbox://styles/mapbox/outdoors-v12"
         onDblClick={handleAddClick}
-        {...longPressEvent}
+        // {...longPressEvent}
+        {...bind}
       >
         { pins.map(p =>(
           <>
