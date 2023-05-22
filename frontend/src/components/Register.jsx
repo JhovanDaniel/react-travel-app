@@ -15,7 +15,7 @@ export default function Register({setShowRegister}){
     e.preventDefault();
     const newUser = {
       username:nameRef.current.value,
-      email:emailRef.current.value,
+      email:'test@user.com',
       password:passwordRef.current.value
     };
     try{
@@ -32,12 +32,12 @@ export default function Register({setShowRegister}){
   return(
     <div className="registerContainer">
       <div className="logo">
-      <Room/> JhovanPin
+      <Room/> Travel App
       </div>
       
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Username" ref={nameRef}/>
-        <input type="email" placeholder="Email" ref={emailRef}/>
+        {/* <input type="email" placeholder="Email" ref={emailRef}/> */}
         <input type="password" placeholder="password" ref={passwordRef}/>
         <button className="registerButton">Register</button>
         {success && <span className="success"> Welcome! You can now login! </span> } 

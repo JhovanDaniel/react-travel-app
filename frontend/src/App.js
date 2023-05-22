@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Map, {Marker, Popup} from 'react-map-gl';
-import { Room, Star } from '@material-ui/icons'
+import { Room, Star, Cancel } from '@material-ui/icons'
 import axios from 'axios'
 import {format} from 'timeago.js'
 import useLongPress from './useLongPress';
@@ -24,6 +24,7 @@ const [currentUser, setCurrentUser] = React.useState(myStorage.getItem("user"))
 const [title, setTitle] = React.useState(null)
 const [desc, setDesc] = React.useState(null)
 const [rating, setRating] = React.useState(0)
+const [instructions, setInstructions] = React.useState(true)
 
 const [pins, setPins] = React.useState([])
 const [currentPlaceId, setCurrentPlaceId] = React.useState(null)
@@ -141,6 +142,24 @@ const bind = useDoubleTap((e) => {
         // {...longPressEvent}
         {...bind}
       >
+        {instructions &&  (
+          <div className='instructions-container'>
+            <div className='card'>
+            <h3 className='welcome'>Welcome to the Travel App</h3><br/>
+            <p> <b>Register</b> and <b>log in</b> to add travel pins for others to see!</p><br/>
+            <h4><u>For Mobile 📱</u></h4>
+            <p>Triple tap to add a travel pin </p>
+            <h4><u>For PC 💻</u></h4>
+            <p>Double tap to add a travel pin</p>
+            <hr/>
+            <p> <b>Click</b> on the pins on the map to see their information.</p><br/>
+            <p> Your pins will appear in <span className='orange-text'>orange</span> while other users pins will appear <span className='purple-text'>purple</span> 📍</p>
+            </div>
+          <Cancel className="loginCancel" onClick={() => setInstructions(false)}/>
+          </div>
+            
+        )}
+
         { pins.map(p =>(
           <>
           <Marker longitude={p.long} latitude={p.lat} offsetLeft={-20} offsetRight={-10} onClick={() => handleMarkerClick(p._id, p.lat, p.long) }>

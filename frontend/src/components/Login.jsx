@@ -30,7 +30,7 @@ export default function Login({setShowLogin, myStorage, setCurrentUser}){
   return(
     <div className="loginContainer">
       <div className="login-logo">
-      <Room/> JhovanPin
+      <Room/> Travel App
       </div>
       
       <form onSubmit={handleSubmit}>
