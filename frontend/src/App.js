@@ -81,7 +81,7 @@ const handleSubmit = async (e) => {
   }
 
   try{
-    const res = await axios.post("/pins", newPin);
+    const res = await axios.post("https://react-travel-app-api.vercel.app/api/pins", newPin);
     setPins([...pins, res.data])
     setNewPlace(null)
 
