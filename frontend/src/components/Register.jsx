@@ -39,6 +39,7 @@ export default function Register({setShowRegister}){
         <input type="text" placeholder="Username" ref={nameRef}/>
         {/* <input type="email" placeholder="Email" ref={emailRef}/> */}
         <input type="password" placeholder="password" ref={passwordRef}/>
+        <p className='muted-text'>**Passwords are encrypted and cannot be recovered by anyone.</p>
         <button className="registerButton">Register</button>
         {success && <span className="success"> Welcome! You can now login! </span> } 
         {error && <span className="failure"> Something went wrong </span> }

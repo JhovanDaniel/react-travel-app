@@ -153,7 +153,7 @@ const bind = useDoubleTap((e) => {
             <p>Double tap to add a travel pin</p>
             <hr/>
             <p> <b>Click</b> on the pins on the map to see their information.</p><br/>
-            <p> Your pins will appear in <span className='orange-text'>orange</span> while other users pins will appear <span className='purple-text'>purple</span> 📍</p>
+            <p> Your pins will appear in <span className='orange-text'>orange</span> while other users pins will appear <span className='purple-text'>purple</span> 📍</p><br/>
             </div>
           <Cancel className="loginCancel" onClick={() => setInstructions(false)}/>
           </div>
